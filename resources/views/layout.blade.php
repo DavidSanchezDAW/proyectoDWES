@@ -9,9 +9,9 @@
 </head>
 <body>
     @include('partials.cabecera')
-    <section>
+    <main>
     @yield('contenido')
-    </section>
+    </main>
     @include('partials.pie')
 </body>
 </html>

@@ -4,6 +4,10 @@
     box-sizing: border-box;
     font-family: 'Poppins', sans-serif;
 }
+body{
+    display: flex;
+    flex-direction: column;
+}
 header{
     background-color: #353535;
     height: 15vh;
@@ -19,16 +23,37 @@ header > div{
     width:100%;
     display:flex;
 }
+nav a{
+    text-decoration: none;
+    color: #fff;
+    font-size: 1.2em;
+    padding: 1em;
+    text-align: center;
+    transition: all .3s ease-in-out;
+}
+nav a:hover{
+    background-color: rgb(255, 188, 159);
+    color: #353535;
+}
 .logo{
     display:block;
     height:4em;
     width:auto;
 }
-section{
-    padding:1em;
+.center{
+    text-align: center;
+}
+main{
+    min-height: 80vh;
     background-color: rgb(95, 59, 59);
 }
-section > * {
+.equipo{
+    box-shadow: black 0px 0px 3 0px;
+}
+section *{
+    margin: 1em;
+}
+main > * {
     margin-left: .8em;
     margin-top: .5em;
     margin-bottom:10vh;
@@ -40,17 +65,12 @@ footer{
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    bottom: 0;
-    position: fixed;
 }
 body {
     background-color: #272727;
     color: #fff;
 }
-a{
-    color: rgb(255, 123, 75);
-    margin:.4em;
-}
+
 table{
     width: 100%;
     border-collapse: collapse;
