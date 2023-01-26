@@ -1,39 +1,33 @@
 @extends('layout')
 @section('contenido')
-    <h1>Lista de eventos</h1>
-    <table>
-        <tr>
-            <th>Nombre</th>
-            <th>Fecha</th>
-            <th>Descripcion</th>
-            <th>Acciones</th>
-        </tr>
-        <tr>
-            <td>Evento 1</td>
-            <td>01/01/2020</td>
-            <td>Descripcion del evento 1</td>
-            <td>
-                <a href="">Editar</a>
-                <a href="">Borrar</a>
-            </td>
-        </tr>
-        <tr>
-            <td>Evento 2</td>
-            <td>02/02/2020</td>
-            <td>Descripcion del evento 2</td>
-            <td>
-                <a href="">Editar</a>
-                <a href="">Borrar</a>
-            </td>
-        </tr>
-        <tr>
-            <td>Evento 3</td>
-            <td>03/03/2020</td>
-            <td>Descripcion del evento 3</td>
-            <td>
-                <a href="">Editar</a>
-                <a href="">Borrar</a>
-            </td>
-        </tr>
-    </table>
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">First</th>
+      <th scope="col">Last</th>
+      <th scope="col">Handle</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">1</th>
+      <td>Mark</td>
+      <td>Otto</td>
+      <td>@mdo</td>
+    </tr>
+    <tr>
+      <th scope="row">2</th>
+      <td>Jacob</td>
+      <td>Thornton</td>
+      <td>@fat</td>
+    </tr>
+    <tr>
+      <th scope="row">3</th>
+      <td>Larry</td>
+      <td>the Bird</td>
+      <td>@twitter</td>
+    </tr>
+  </tbody>
+</table>
 @endsection
