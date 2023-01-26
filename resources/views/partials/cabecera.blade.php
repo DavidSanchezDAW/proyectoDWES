@@ -1,7 +1,7 @@
 <header>
     <div>
         <img class="logo" src="{{ asset('img/logo.png') }}" alt="Logo">
-        <h1>Proyecto lololol</h1>
+        <h1>Asociacion de algo</h1>
     </div>
     <nav>
         <a href="{{ route('inicio') }}"> Inicio</a>

@@ -26,8 +26,8 @@ header > div{
 nav a{
     text-decoration: none;
     color: #fff;
-    font-size: 1.2em;
     padding: 1em;
+    font-size: 1.2em;
     text-align: center;
     transition: all .3s ease-in-out;
 }
@@ -38,17 +38,21 @@ nav a:hover{
 .logo{
     display:block;
     height:4em;
+    margin:.4em;
     width:auto;
 }
 .center{
     text-align: center;
 }
+.inicio{
+    background-image: url(../img/inicio.jpg);
+}
 main{
     min-height: 80vh;
-    background-color: rgb(95, 59, 59);
+    background-color: rgb(124, 65, 29);
 }
 .equipo{
-    box-shadow: black 0px 0px 3 0px;
+    box-shadow: black 0px 0px 3px 0px;
 }
 section *{
     margin: 1em;
@@ -74,6 +78,9 @@ body {
 table{
     width: 100%;
     border-collapse: collapse;
+}
+ul{
+    margin-left:2em;
 }
 th, td{
     padding: 0.5em;
