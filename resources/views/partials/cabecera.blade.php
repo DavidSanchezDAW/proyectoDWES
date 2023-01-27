@@ -19,6 +19,10 @@
           <li><a class="nav-link px-2 text-white" href="{{ route('contacto') }}">Contacto</a></li>
           <li><a class="nav-link px-2 text-white" href="{{ route('dondeEstamos') }}">Donde estamos</a></li>
         </ul>
+        <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+          <li><a class="nav-link px-2 text-white" href="{{ route('login') }}">Login</a></li>
+          <li><a class="nav-link px-2 text-white" href="{{ route('register') }}">Register</a></li>
+        </ul>
       </div>
     </div>
   </header>

@@ -32,3 +32,14 @@ Route::get('contacto', function () {
 Route::get('dondeEstamos', function () {
     return view('dondeEstamos');
 })->name('dondeEstamos');
+
+Route::get('login', function () {
+    return view('login');
+})->name('login');
+Route::get('register', function () {
+    return view('account.register');
+})->name('register');
+
+Route::get('login', function () {
+    return view('account.login');
+})->name('login');
