@@ -1,7 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\EventController;
+use App\Http\Controllers\UserController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -17,13 +18,8 @@ Route::get('/', function () {
     return view('inicio');
 })->name('inicio');
 
-Route::get('miembros', function () {
-    return view('miembros');
-})->name('miembros');
+Route::get('miembros', [UserController::class, 'index'])->name('miembros');
 
-Route::get('eventos', function () {
-    return view('eventos');
-})->name('eventos');
 
 Route::get('contacto', function () {
     return view('contacto');
@@ -43,3 +39,6 @@ Route::get('register', function () {
 Route::get('login', function () {
     return view('account.login');
 })->name('login');
+
+Route::resource('users', UserController::class);
+Route::resource('events', EventController::class);
