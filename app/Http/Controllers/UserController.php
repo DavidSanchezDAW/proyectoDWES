@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use App\Models\User;
 class UserController extends Controller
 {
     /**
@@ -13,7 +13,12 @@ class UserController extends Controller
      */
     public function index()
     {
-        //
+        $users = User::all();
+        //convert user birthdate to age
+        // foreach ($users as $user) {
+        //     $user->age = date_diff(date_create($user->birthday), date_create('now'))->y;
+        // }
+        return view('users.index', compact('users'));
     }
 
     /**
@@ -43,9 +48,9 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(User $user)
     {
-        //
+        return view('users.show', compact('user'));
     }
 
     /**
