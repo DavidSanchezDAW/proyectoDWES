@@ -11,7 +11,7 @@
 </head>
 <body>
     @include('partials.cabecera')
-    <main class="container .flex-column">
+    <main class="container ">
         @yield('contenido')
     </main>
 

@@ -25,6 +25,12 @@ footer * {
 .equipo{
     box-shadow: black 0px 0px 3px 0px;
 }
+.flex-row{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+}
 /* .table{
     display: table;
     margin:2em;
@@ -62,4 +68,16 @@ thead{
 
 .social-link{
     text-decoration: none;
+}
+
+.lista-mensajes{
+    width:30%;
+}
+.mensaje-display{
+    height: 50vh;
+    width:80%;
+    margin: 1em;
+    background-color: aliceblue;
+    border-radius: 10px;
+    border:1px solid gray
 }

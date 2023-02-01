@@ -18,7 +18,8 @@ return new class extends Migration
             $table->string('name', 15);
             $table->string('subject', 100);
             $table->text('text');
-            $table->boolean('readed');
+            $table->boolean('readed', 0);
+            $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
             $table->timestamps();
         });
     }

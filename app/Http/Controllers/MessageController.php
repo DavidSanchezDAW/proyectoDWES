@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Message;
 use Illuminate\Http\Request;
-use App\Models\User;
-class UserController extends Controller
+
+class MessageController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -13,12 +14,8 @@ class UserController extends Controller
      */
     public function index()
     {
-        $users = User::where('rol', 'member')->get();
-        //convert user birthdate to age
-        // foreach ($users as $user) {
-        //     $user->age = date_diff(date_create($user->birthday), date_create('now'))->y;
-        // }
-        return view('users.index', compact('users'));
+        $msgs = Message::all();
+        return view('messages.index', compact('msgs'));
     }
 
     /**
@@ -45,22 +42,21 @@ class UserController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Models\Message  $Message
      * @return \Illuminate\Http\Response
      */
-    public function show(User $user)
+    public function show(Message $message)
     {
-
-        return view('users.show', compact('user'));
+        return view('messages.show', compact('message'));
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Models\Message  $Message
      * @return \Illuminate\Http\Response
      */
-    public function edit(User $user)
+    public function edit(Message $message)
     {
         //
     }
@@ -69,10 +65,10 @@ class UserController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \App\Models\Message  $Message
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Message $message)
     {
         //
     }
@@ -80,10 +76,10 @@ class UserController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  \App\Models\Message  $Message
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Message $Message)
     {
         //
     }

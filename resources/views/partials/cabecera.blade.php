@@ -14,6 +14,7 @@
         <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
           <li><a class="nav-link px-2 text-white" href="{{ route('login') }}">Login</a></li>
           <li><a class="nav-link px-2 text-white" href="{{ route('register') }}">Register</a></li>
+          <li><a class="nav-link px-2 text-white" href="{{ route('messages.index') }}">Mensajes</a></li>
         </ul>
       </div>
     </div>

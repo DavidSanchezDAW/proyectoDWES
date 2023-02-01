@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\EventController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\MessageController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -42,3 +43,4 @@ Route::get('login', function () {
 
 Route::resource('users', UserController::class);
 Route::resource('events', EventController::class);
+Route::resource('messages', MessageController::class);
