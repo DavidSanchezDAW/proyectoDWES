@@ -74,10 +74,15 @@ thead{
     width:30%;
 }
 .mensaje-display{
-    height: 50vh;
-    width:80%;
-    margin: 1em;
-    background-color: aliceblue;
-    border-radius: 10px;
-    border:1px solid gray
+    width:50%;
+    margin:2em;
+}
+.readed{
+    background-color: #f6f6f6;
+    opacity: 0.8;
+    color:rgb(155, 155, 155)
+}
+.readed:hover{
+    background-color: #ffffff;
+    color:rgb(157, 157, 157)
 }

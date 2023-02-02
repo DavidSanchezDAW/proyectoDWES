@@ -20,9 +20,9 @@ return new class extends Migration
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->date('birthday');
-            $table->enum('rol', ['member', 'admin']);
-            $table->text('instagram');
-            $table->text('twitch');
+            $table->enum('rol', ['member', 'admin'])->default('member');
+            $table->text('instagram')->default('');
+            $table->text('twitch')->default('');
             $table->rememberToken();
             $table->timestamps();
         });

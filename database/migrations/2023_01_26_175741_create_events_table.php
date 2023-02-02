@@ -20,7 +20,7 @@ return new class extends Migration
             $table->string('location');
             $table->date('date');
             $table->time('time');
-            $table->boolean('visible');
+            $table->boolean('visible')->default('1');
             $table->timestamps();
         });
     }

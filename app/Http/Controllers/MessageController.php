@@ -14,7 +14,7 @@ class MessageController extends Controller
      */
     public function index()
     {
-        $msgs = Message::all();
+        $msgs = Message::get()->reverse();
         return view('messages.index', compact('msgs'));
     }
 
@@ -46,8 +46,10 @@ class MessageController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function show(Message $message)
-    {
-        return view('messages.show', compact('message'));
+    {   $message->readed = 1;
+        $message->save();
+        $msgs = Message::all();
+        return view('messages.show', compact('message'), compact('msgs'));
     }
 
     /**

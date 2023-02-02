@@ -28,7 +28,7 @@ class UserController extends Controller
      */
     public function create()
     {
-        //
+        
     }
 
     /**
@@ -39,7 +39,14 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $user = new User();
+        $user->name = $request->name;
+        $user->email = $request->email;
+        $user->password = $request->password;
+        $user->birthday = $request->birthday;
+        $user->rol = 'member';
+        $user->save();
+        return redirect()->route('users.index');
     }
 
     /**
