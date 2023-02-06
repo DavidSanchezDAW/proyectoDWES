@@ -4,8 +4,14 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\User;
 
 class Event extends Model
 {
     use HasFactory;
+    //reference to user table
+    public function users()
+    {
+        return $this->belongsToMany(User::class);
+    }
 }

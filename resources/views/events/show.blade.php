@@ -7,6 +7,14 @@
         <p>Fecha: {{$event->date}}</p>
         <p>Hora: {{$event->time}}</p>
         <p>Descripción: {{$event->description}}</p>
+        <ul class="list-group">
+            <li class="list-group-item cabecera-lista">Participantes</li>
+            @forelse($event->users as $user)
+            <li class="list-group-item">{{$user->name}}</li>
+            @empty
+            <p style="margin:1em; color:gray">No hay participantes</p>
+            @endforelse
+          </ul>
     </div>
 </div>
 @endsection

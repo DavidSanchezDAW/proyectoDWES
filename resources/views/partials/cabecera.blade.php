@@ -15,6 +15,7 @@
           <li><a class="nav-link px-2 text-white" href="{{ route('login') }}">Login</a></li>
           <li><a class="nav-link px-2 text-white" href="{{ route('register') }}">Register</a></li>
           <li><a class="nav-link px-2 text-white" href="{{ route('messages.index') }}">Mensajes</a></li>
+          <li><a class="nav-link px-2 text-white" href="{{ route('events.create') }}">Crear evento</a></li>
         </ul>
       </div>
     </div>
