@@ -1,28 +1,40 @@
 @extends('layout')
 @section('contenido')
-<form action={{route('users.store')}} method="POST">
+@if($errors->any())
+hola
+@endif
+<form action={{route('register')}} method="POST">
     @csrf
 <div class="card registro">
     <h1>Registro</h1>
     <div class="mb-3">
         <label for="a" class="form-label">Nombre</label>
-        <input type="text" class="form-control" name="name" id="a">
+        <input value="{{old('name')}}" type="text" class="form-control" name="name" id="a">
+        @error('name') {{$message}} @enderror
     </div>
     <div class="mb-3">
         <label for="a2" class="form-label">Email</label>
-        <input type="text" class="form-control" name="email" id="a2">
+        <input value="{{old('email')}}" type="text" class="form-control" name="email" id="a2">
+        @error('email') {{$message}} @enderror
+
     </div>
     <div class="mb-3">
         <label for="a2" class="form-label">Contraseña</label>
-        <input type="password" class="form-control" name="password" id="a2">
+        <input value="{{old('passworld')}}"type="password" class="form-control" name="password" id="a2">
+        @error('password') {{$message}} @enderror
+
     </div>
     <div class="mb-3">
         <label for="a2" class="form-label">repetir Contraseña</label>
-        <input type="text" class="form-control" name="password2" id="a2">
+        <input type="text" class="form-control" name="password_confirmation" id="a2">
+        @error('password_confirmation') {{$message}} @enderror
+
     </div>
     <div class="mb-3">
         <label for="a2" class="form-label">Fecha de nacimiento</label>
         <input type="date" class="form-control" id="a2" name="birthday">
+        @error('birthdy') {{$message}} @enderror
+
     </div>
     {{-- <div class="mb-3">
         <label for="a2" class="form-label">Instagram</label>

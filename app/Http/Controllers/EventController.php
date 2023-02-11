@@ -41,7 +41,7 @@ class EventController extends Controller
         $event->location = $request->location;
         $event->description = $request->description;
         $event->date = $request->date;
-        $event->visible = $request->visible;
+        $event->visible = $request->visible ? 1:0;
         $event->time = $request->time;
         $event->save();
         return redirect()->route('events.index');

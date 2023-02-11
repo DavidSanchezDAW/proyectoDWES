@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
+use Illuminate\Support\Facades\Storage;
 class UserController extends Controller
 {
     /**
@@ -14,10 +15,13 @@ class UserController extends Controller
     public function index()
     {
         $users = User::where('rol', 'member')->get();
-        //convert user birthdate to age
-        // foreach ($users as $user) {
-        //     $user->age = date_diff(date_create($user->birthday), date_create('now'))->y;
-        // }
+        foreach($users as $user){
+            if(file_exists(public_path('img/profilePictures/'.$user->id.'.jpg'))){
+                $user->profilePicture = $user->id;
+            }else{
+                $user->profilePicture = 'default';
+            }
+        }
         return view('users.index', compact('users'));
     }
 
@@ -57,7 +61,7 @@ class UserController extends Controller
      */
     public function show(User $user)
     {
-
+        
         return view('users.show', compact('user'));
     }
 
@@ -69,7 +73,12 @@ class UserController extends Controller
      */
     public function edit(User $user)
     {
-        //
+        if(file_exists(public_path('img/profilePictures/'.$user->id.'.jpg'))){
+            $user->profilePicture = $user->id;
+        }else{
+            $user->profilePicture = 'default';
+        }
+        return(view('users.edit', compact('user')));    
     }
 
     /**

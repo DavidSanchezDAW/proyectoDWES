@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\EventController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\MessageController;
+use App\Http\Controllers\LoginController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -30,17 +31,13 @@ Route::get('dondeEstamos', function () {
     return view('dondeEstamos');
 })->name('dondeEstamos');
 
-Route::get('login', function () {
-    return view('login');
-})->name('login');
-Route::get('register', function () {
-    return view('account.register');
-})->name('register');
 
-Route::get('login', function () {
-    return view('account.login');
-})->name('login');
 
+Route::get('register', [LoginController::class, 'registerForm']);
+Route::post('register', [LoginController::class, 'register'])->name('register');
+Route::get('login', [LoginController::class, 'loginForm']);
+Route::post('login', [LoginController::class, 'login'])->name('login');
+Route::get('logout', [LoginController::class, 'logout'])->name('logout');
 Route::resource('users', UserController::class);
 Route::resource('events', EventController::class);
 Route::resource('messages', MessageController::class);
