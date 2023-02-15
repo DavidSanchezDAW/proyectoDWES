@@ -11,4 +11,7 @@
     </div>
     <button type="submit" class="btn btn-primary">Submit</button>
 </form>
+@if($errors->any())
+    {{ implode('', $errors->all('<div>:message</div>')) }}
+@endif
 @endsection

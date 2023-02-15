@@ -31,7 +31,8 @@ Route::get('dondeEstamos', function () {
     return view('dondeEstamos');
 })->name('dondeEstamos');
 
-
+Route::post('events/participate/{event}', [EventController::class, 'participate'])->name('events.participate');
+Route::post('events/unparticipate/{event}', [EventController::class, 'unparticipate'])->name('events.unparticipate');
 
 Route::get('register', [LoginController::class, 'registerForm']);
 Route::post('register', [LoginController::class, 'register'])->name('register');

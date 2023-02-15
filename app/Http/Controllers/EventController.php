@@ -87,7 +87,17 @@ class EventController extends Controller
         $event->save();
         return redirect()->route('events.index');
     }
+    public function participate(Event $event)
+    {
+        $event->users()->attach(auth()->user()->id);
+        return redirect()->route('events.show', $event);
+    }
 
+    public function unparticipate(Event $event)
+    {
+        $event->users()->detach(auth()->user()->id);
+        return redirect()->route('events.show', $event);
+    }
     /**
      * Remove the specified resource from storage.
      *

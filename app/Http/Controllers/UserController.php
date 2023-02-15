@@ -98,6 +98,7 @@ class UserController extends Controller
             $file = $request->file('profilePicture');
             $name = $user->id.'.jpg';
             $success = $file->move('public\img\profilePictures', $name);
+            return $success;
         }
         return redirect()->route('users.index');
     }

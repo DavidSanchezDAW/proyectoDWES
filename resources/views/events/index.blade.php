@@ -14,6 +14,7 @@
       <th scope="row"><a href={{route('events.show', $event)}}>{{$event->name}}</th>
       <td>{{$event->location}}</td>
       <td>{{$event->date}}</td>
+      @auth
       @if(Auth::user()->rol == "admin")
       <td><a href={{route('events.edit', $event)}}>Editar</a></td>
       <td>
@@ -24,6 +25,7 @@
         </form>
       </td>
       @endif
+      @endauth
       
     </tr>
     @empty
