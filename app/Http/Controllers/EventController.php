@@ -66,7 +66,7 @@ class EventController extends Controller
      */
     public function edit(Event $event)
     {
-        //
+        return view('events.edit', compact('event'));
     }
 
     /**
@@ -78,7 +78,14 @@ class EventController extends Controller
      */
     public function update(Request $request, Event $event)
     {
-        //
+        $event->name = $request->name;
+        $event->location = $request->location;
+        $event->description = $request->description;
+        $event->date = $request->date;
+        $event->visible = $request->visible ? 1:0;
+        $event->time = $request->time;
+        $event->save();
+        return redirect()->route('events.index');
     }
 
     /**
@@ -89,6 +96,7 @@ class EventController extends Controller
      */
     public function destroy(Event $event)
     {
-        //
+        $event->delete();
+        return redirect()->route('events.index');
     }
 }

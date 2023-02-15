@@ -14,6 +14,17 @@
       <th scope="row"><a href={{route('events.show', $event)}}>{{$event->name}}</th>
       <td>{{$event->location}}</td>
       <td>{{$event->date}}</td>
+      @if(Auth::user()->rol == "admin")
+      <td><a href={{route('events.edit', $event)}}>Editar</a></td>
+      <td>
+        <form action={{route('events.destroy', $event)}} method="post">
+          @csrf 
+          @method('DELETE')
+          <input type="submit" value="Eliminar" class="btn btn-danger">
+        </form>
+      </td>
+      @endif
+      
     </tr>
     @empty
     <p>No hay eventos programados</p>

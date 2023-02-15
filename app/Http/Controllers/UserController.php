@@ -88,9 +88,18 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, User $user)
     {
-        //
+        $user->name = $request->name ? $request->name : $user->name;
+        $user->email = $request->email ? $request->email : $user->email;
+        $user->birthday = $request->birthday ? $request->birthday : $user->birthday;
+        $user->save();
+        if($request->hasFile('profilePicture')){
+            $file = $request->file('profilePicture');
+            $name = $user->id.'.jpg';
+            $success = $file->move('public\img\profilePictures', $name);
+        }
+        return redirect()->route('users.index');
     }
 
     /**
