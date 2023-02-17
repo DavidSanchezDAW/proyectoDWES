@@ -14,7 +14,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        $users = User::where('rol', 'member')->get();
+        $users = User::all();
         foreach($users as $user){
             if(file_exists(public_path('img/profilePictures/'.$user->id.'.jpg'))){
                 $user->profilePicture = $user->id;
@@ -97,8 +97,7 @@ class UserController extends Controller
         if($request->hasFile('profilePicture')){
             $file = $request->file('profilePicture');
             $name = $user->id.'.jpg';
-            $success = $file->move('public\img\profilePictures', $name);
-            return $success;
+            $success = $file->move('img\profilePictures', $name);
         }
         return redirect()->route('users.index');
     }

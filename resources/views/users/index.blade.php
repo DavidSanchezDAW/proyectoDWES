@@ -8,7 +8,14 @@
     <div class="d-flex gap-2 w-100 justify-content-between">
       <div>
         <h6 class="mb-0">{{$user->name}}</h6>
-        <p class="mb-0 opacity-75"></p>
+        
+        <p class="mb-0 opacity-75">
+          @if($user->rol == "admin")
+          <span style="color:rgb(190, 162, 0)">Administrador</span>
+          @else
+          Miembro
+          @endif
+        </p>
       </div>
       <small class="opacity-50 text-nowrap">{{$user->birthday}}</small>
     </div>

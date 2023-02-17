@@ -1,6 +1,7 @@
 <footer class="d-flex flex-wrap justify-content-between align-items-center border-top">
-    <p class="col-md-4 mb-0 text-muted">© 2022 Nombre de la asociacion<br>Desarrollado por David Sanchez</p>
-    <a class="link" href="cookies">Política de cookies</a> <button class="btn btn-outline-primary" type="button">&#9881;Cookies</button>
+    <p class="col-md-4 mb-0 text-muted">© 2022 Asociación del Cubo de Rubik<br>Desarrollado por David Sanchez</p>
+    <a class="link" href="cookies" href="{{route('cookies')}}">Política de cookies</a> 
+    {{-- <button class="btn btn-outline-primary" type="button">&#9881;Cookies</button> --}}
 
 
 

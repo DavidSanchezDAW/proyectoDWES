@@ -13,13 +13,8 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('messages', function (Blueprint $table) {
-            $table->id();
-            $table->string('name', 15);
-            $table->string('subject', 100);
-            $table->text('text');
-            $table->boolean('readed')->default('0');
-            $table->timestamps();
+        Schema::table('events', function (Blueprint $table) {
+            //
         });
     }
 
@@ -30,6 +25,8 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('messages');
+        Schema::table('events', function (Blueprint $table) {
+            //
+        });
     }
 };

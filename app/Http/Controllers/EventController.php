@@ -13,8 +13,12 @@ class EventController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
+    {   
         $events = Event::where('visible', true)->get();
+        if(auth()->user()){
+            if(auth()->user()->rol == 'admin')
+                $events = Event::all();
+        }
         return view('events.index', compact('events'));
     }
 
@@ -98,6 +102,13 @@ class EventController extends Controller
         $event->users()->detach(auth()->user()->id);
         return redirect()->route('events.show', $event);
     }
+    public function cambiarVisibilidad(Event $event)
+    {
+        $event->visible = !$event->visible;
+        $event->save();
+        return redirect()->route('events.index');
+    }
+    
     /**
      * Remove the specified resource from storage.
      *

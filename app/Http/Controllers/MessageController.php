@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Message;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class MessageController extends Controller
 {
@@ -25,7 +26,7 @@ class MessageController extends Controller
      */
     public function create()
     {
-        //
+        return view('messages.create');
     }
 
     /**
@@ -36,7 +37,16 @@ class MessageController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $message = new Message();
+        $message->name = $request->name;
+        $message->subject = $request->subject;
+        $message->text = $request->text;
+        $message->readed = 0;
+        $message->save();
+    
+        $sent = true;
+        return redirect()->route('messages.create', compact('sent'));
+        
     }
 
     /**
@@ -48,7 +58,7 @@ class MessageController extends Controller
     public function show(Message $message)
     {   $message->readed = 1;
         $message->save();
-        $msgs = Message::all();
+        $msgs = Message::all()->reverse();
         return view('messages.show', compact('message'), compact('msgs'));
     }
 
@@ -81,8 +91,9 @@ class MessageController extends Controller
      * @param  \App\Models\Message  $Message
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Message $Message)
+    public function destroy(Message $message)
     {
-        //
+        $message->delete();
+        return redirect()->route('messages.index');
     }
 }

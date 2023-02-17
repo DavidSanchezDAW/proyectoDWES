@@ -1,7 +1,7 @@
 @extends('layout')
 @section('contenido')
 <div class="card">
-    <div class="card-body">
+    <div class="card-body evento-display">
         <h1>{{$event->name}}</h1>
         <p>Localidad: {{$event->location}}</p>
         <p>Fecha: {{$event->date}}</p>
@@ -21,7 +21,7 @@
                     <br>
                         <form action={{route('events.unparticipate', $event)}} method="post">
                             @csrf 
-                            <input type="submit" value="Borrarse" class="btn btn-primary" style="background:red; border: 1px solid red">
+                            <input type="submit" value="Dejar de participar" class="btn btn-primary" style="background:red; border: 1px solid red">
                         </form>
                     @else
                     <form action={{route('events.participate', $event)}} method="post">
@@ -29,6 +29,8 @@
                         <input type="submit" value="Participar" class="btn btn-primary">
                     </form>
                     @endif
+                @else
+                    <p style="color:gray">No puedes participar en un evento como administrador</p>
                 @endif
             @endauth
     </div>
