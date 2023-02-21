@@ -2,7 +2,7 @@
 @section('contenido')
 <div class="card">
     <div class="card-body">
-        <h1>{{$user->name}}
+        <h1><img src="{{asset('img/profilePictures/'.$user->profilePicture.'.jpg')}}" alt="twbs" width="82" height="82" class="rounded-circle flex-shrink-0"> {{$user->name}}
         @if($user->rol == "admin")
         <span style="color:rgb(190, 162, 0); font-size:.7em;">Administrador</span>
         @endif

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 use App\Models\User;
 use Illuminate\Support\Facades\Storage;
 class UserController extends Controller
@@ -41,7 +42,7 @@ class UserController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(RegisterRequest $request)
     {
         $user = new User();
         $user->name = $request->name;
@@ -61,7 +62,11 @@ class UserController extends Controller
      */
     public function show(User $user)
     {
-        
+        if(file_exists(public_path('img/profilePictures/'.$user->id.'.jpg'))){
+            $user->profilePicture = $user->id;
+        }else{
+            $user->profilePicture = 'default';
+        }
         return view('users.show', compact('user'));
     }
 
@@ -90,9 +95,12 @@ class UserController extends Controller
      */
     public function update(Request $request, User $user)
     {
-        $user->name = $request->name ? $request->name : $user->name;
-        $user->email = $request->email ? $request->email : $user->email;
         $user->birthday = $request->birthday ? $request->birthday : $user->birthday;
+        $user->password = $request->password ? Hash::make($request->password) : $user->password;
+        $user->instagram = $request->instagram ? $request->instagram : $user->instagram;
+        $user->twitter = $request->twitter ? $request->twitter : $user->twitter;
+        $user->twitch = $request->twitch ? $request->twitch : $user->twitch;
+
         $user->save();
         if($request->hasFile('profilePicture')){
             $file = $request->file('profilePicture');

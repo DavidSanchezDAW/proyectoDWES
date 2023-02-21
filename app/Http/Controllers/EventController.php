@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Event;
 use Illuminate\Http\Request;
+use App\Http\Requests\EventRequest;
 
 class EventController extends Controller
 {
@@ -29,6 +30,10 @@ class EventController extends Controller
      */
     public function create()
     {
+        if(auth()->user() == null)
+            return redirect()->route('events.index');
+        if(auth()->user()->rol != 'admin')
+            return redirect()->route('events.index');
         return view('events.create');
     }
 
@@ -38,7 +43,7 @@ class EventController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(EventRequest $request)
     {
         $event = new Event();
         $event->name = $request->name;
@@ -70,6 +75,10 @@ class EventController extends Controller
      */
     public function edit(Event $event)
     {
+        if(auth()->user() == null)
+            return redirect()->route('events.index');
+        if(auth()->user()->rol != 'admin')
+            return redirect()->route('events.index');
         return view('events.edit', compact('event'));
     }
 
@@ -80,7 +89,7 @@ class EventController extends Controller
      * @param  \App\Models\Event  $event
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Event $event)
+    public function update(EventRequest $request, Event $event)
     {
         $event->name = $request->name;
         $event->location = $request->location;

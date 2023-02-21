@@ -1,8 +1,5 @@
 @extends('layout')
 @section('contenido')
-@if($errors->any())
-hola
-@endif
 <form action={{route('register')}} method="POST">
     @csrf
 <div class="card registro">
@@ -32,8 +29,8 @@ hola
     </div>
     <div class="mb-3">
         <label for="a2" class="form-label">Fecha de nacimiento</label>
-        <input type="date" class="form-control" id="a2" name="birthday">
-        @error('birthdy') {{$message}} @enderror
+        <input type="date" class="form-control" id="a2" value="{{old('birthday')}}" name="birthday">
+        @error('birthday') {{$message}} @enderror
 
     </div>
     {{-- <div class="mb-3">

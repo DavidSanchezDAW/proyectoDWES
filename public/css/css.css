@@ -91,3 +91,7 @@ thead{
 .cabecera-lista{
     background-color: #ffc18e;
 }
+.link-none{
+    text-decoration: none;
+    color: black;
+}

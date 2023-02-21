@@ -25,22 +25,15 @@ class RegisterRequest extends FormRequest
     {
         return [
             'name' => 'required',
-            'email' => 'required|email|unique:users',
             'password' => 'required|min:8',
-            'password_confirmation' => 'required|same:password',
             'birthday' => 'required|date|before:today',
         ];  
     }
     public function messages(){
         return [
             'name.required' => "El nombre es obligatorio",
-            'email.required' => "El email es obligatorio",
-            'email.email' => "El email no es valido",
-            'email.unique' => "El email ya esta registrado",
             'password.required' => "La contraseña es obligatoria",
             'password.min' => "La contraseña debe tener al menos 8 caracteres",
-            'password_confirmation.required' => "La confirmación de la contraseña es obligatoria",
-            'password_confirmation.same' => "Las contraseñas no coinciden",
             'birthday.required' => "La fecha de nacimiento es obligatoria",
             'birthday.date' => "La fecha de nacimiento no es valida",
             'birthday.before' => "Fecha de nacimiento no valida",

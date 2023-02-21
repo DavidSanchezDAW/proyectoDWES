@@ -10,11 +10,13 @@ use Illuminate\Support\Facades\Hash;
 class LoginController extends Controller
 {  
     public function loginForm(){
-
+        if(auth()->user() != null)
+            return redirect()->route('inicio');
         return view('auth.login');
     }
     public function login(Request $request)
     {
+        
         $credentials = $request->only('name', 'password');
         if (Auth::guard('web')->attempt($credentials)) {
             $request->session()->regenerate();
@@ -33,6 +35,8 @@ class LoginController extends Controller
         return redirect('/');
     }
     public function registerForm(){
+        if(auth()->user() != null)
+            return redirect()->route('inicio');
         return view('auth.register');
     }
 

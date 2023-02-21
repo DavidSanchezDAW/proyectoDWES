@@ -6,6 +6,14 @@
       <th scope="col">Nombre</th>
       <th scope="col">Localidad</th>
       <th scope="col">Fecha</th>
+      <th scope="col">Tags</th>
+      @Auth
+      @if(Auth::user()->rol == "admin")
+      <th scope="col" style="background-color:darksalmon">Editar</th>
+      <th scope="col" style="background-color:darksalmon">Eliminar</th>
+      <th scope="col" style="background-color:darksalmon">Visibilidad</th>
+      @endif
+      @endauth
     </tr>
   </thead>
   <tbody>
@@ -23,6 +31,7 @@
       @endguest
       <td>{{$event->location}}</td>
       <td>{{$event->date}}</td>
+      <td>{{$event->tags}}</td>
       @auth
       @if(Auth::user()->rol == "admin")
       <td>

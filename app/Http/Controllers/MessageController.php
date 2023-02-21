@@ -15,6 +15,10 @@ class MessageController extends Controller
      */
     public function index()
     {
+        if(auth()->user() == null)
+            return redirect()->route('inicio');
+        if(auth()->user()->rol != 'admin')
+            return redirect()->route('inicio');
         $msgs = Message::get()->reverse();
         return view('messages.index', compact('msgs'));
     }
@@ -56,7 +60,12 @@ class MessageController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function show(Message $message)
-    {   $message->readed = 1;
+    {   
+        if(auth()->user() == null)
+            return redirect()->route('inicio');
+        if(auth()->user()->rol != 'admin')
+            return redirect()->route('inicio');
+        $message->readed = 1;
         $message->save();
         $msgs = Message::all()->reverse();
         return view('messages.show', compact('message'), compact('msgs'));

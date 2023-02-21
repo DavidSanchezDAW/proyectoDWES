@@ -10,27 +10,29 @@
         <ul class="list-group">
             <li class="list-group-item cabecera-lista">Participantes</li>
             @forelse($event->users as $user)
-            <li class="list-group-item">{{$user->name}}</li>
+            <a href={{route('users.show', $user)}} class="link-none" aria-current="true">
+                <li class="list-group-item">{{$user->name}}
+                    @if($user->rol == "admin")
+                        <span style="color:rgb(190, 162, 0)">Administrador</span>
+                    @endif
+                </li>
+            </a>
             @empty
             <p style="margin:1em; color:gray">No hay participantes</p>
             @endforelse
           </ul>
             @auth
-                @if(Auth::user()->rol == "member")
-                    @if($event->users->contains(Auth::user()))
-                    <br>
-                        <form action={{route('events.unparticipate', $event)}} method="post">
-                            @csrf 
-                            <input type="submit" value="Dejar de participar" class="btn btn-primary" style="background:red; border: 1px solid red">
-                        </form>
-                    @else
-                    <form action={{route('events.participate', $event)}} method="post">
+                @if($event->users->contains(Auth::user()))
+                <br>
+                    <form action={{route('events.unparticipate', $event)}} method="post">
                         @csrf 
-                        <input type="submit" value="Participar" class="btn btn-primary">
+                        <input type="submit" value="Dejar de participar" class="btn btn-primary" style="background:red; border: 1px solid red">
                     </form>
-                    @endif
                 @else
-                    <p style="color:gray">No puedes participar en un evento como administrador</p>
+                <form action={{route('events.participate', $event)}} method="post">
+                    @csrf 
+                    <input type="submit" value="Participar" class="btn btn-primary">
+                </form>
                 @endif
             @endauth
     </div>
